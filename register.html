@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Register - Article Hub</title>
+
+  <link rel="stylesheet" href="./src/output.css">
+</head>
+
+<body>
+
+  <header id="header"></header>
+
+  <main class="mx-auto max-w-md px-6 py-12">
+
+    <h1 class="text-3xl font-bold">
+      Create an account
+    </h1>
+
+    <form id="register-form" class="mt-8">
+
+      <div>
+        <label for="email">Email</label>
+
+        <input
+          id="email"
+          type="email"
+          required
+          class="mt-2 w-full rounded border px-4 py-2"
+        >
+      </div>
+
+      <div class="mt-4">
+        <label for="password">Password</label>
+
+        <input
+          id="password"
+          type="password"
+          required
+          class="mt-2 w-full rounded border px-4 py-2"
+        >
+      </div>
+
+      <button
+        type="submit"
+        class="mt-6 rounded px-5 py-2 font-semibold"
+      >
+        Register
+      </button>
+
+      <p id="register-message" class="mt-4"></p>
+
+    </form>
+
+  </main>
+
+  <footer id="footer"></footer>
+
+  <script type="module" src="./js/components.js"></script>
+  <script type="module" src="./js/register.js"></script>
+
+</body>
+</html>
