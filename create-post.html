@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Create Article</title>
+
+  <link rel="stylesheet" href="./src/output.css">
+</head>
+
+<body>
+
+  <header id="header"></header>
+
+  <main class="mx-auto max-w-3xl px-6 py-12">
+
+    <h1 class="text-4xl font-bold">
+      Create Article
+    </h1>
+
+    <form id="create-form" class="mt-8 space-y-6">
+
+      <div>
+        <label for="title" class="block font-medium">
+          Title
+        </label>
+
+        <input
+          type="text"
+          id="title"
+          name="title"
+          required
+          class="mt-2 w-full rounded border px-4 py-2"
+        >
+      </div>
+
+      <div>
+        <label for="content" class="block font-medium">
+          Content
+        </label>
+
+        <textarea
+          id="content"
+          name="content"
+          rows="8"
+          required
+          class="mt-2 w-full rounded border px-4 py-2"
+        ></textarea>
+      </div>
+      <div>
+  <label for="category" class="block font-medium">
+    Category
+  </label>
+   <input
+    type="text"
+    id="category"
+    name="category"
+    required
+    class="mt-2 w-full rounded border px-4 py-2"
+  >
+</div>
+
+<p id="error-message" class="text-red-600"></p>
+      <button
+        type="submit"
+        class="rounded px-6 py-2 font-medium"
+      >
+        Create Article
+      </button>
+
+    </form>
+
+  </main>
+
+  <footer id="footer"></footer>
+
+<script type="module" src="./js/components.js"></script>
+<script type="module" src="./js/post.js"></script>
+</body>
+</html>

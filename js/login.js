@@ -29,7 +29,9 @@ loginForm.addEventListener("submit", async (event) => {
 
         if (user) {
             alert("Login successful! Welcome back.");
-            loginForm.reset();
+                 loginForm.reset();
+              window.location.href = "./index.html";
+       
         }
 
     } catch (error) {
