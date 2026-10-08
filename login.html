@@ -3,56 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Login - Article Hub</title>
-
   <link rel="stylesheet" href="./src/output.css">
 </head>
 
-<body>
+<body class="min-h-screen bg-slate-950 text-white">
 
   <header id="header"></header>
 
-  <main class="mx-auto max-w-md px-6 py-12">
+  <main class="flex min-h-[calc(100vh-140px)] items-center justify-center px-6 py-16">
 
-    <h1 class="text-3xl font-bold">
-      Login
-    </h1>
+    <section class="w-full max-w-md">
 
-    <form id="login-form" class="mt-8">
+      <div class="mb-8 text-center">
+        <p class="text-sm font-semibold uppercase tracking-widest text-blue-400">
+          Welcome back
+        </p>
 
-      <div>
-        <label for="email">Email</label>
+        <h1 class="mt-3 text-4xl font-bold tracking-tight">
+          Login
+        </h1>
 
-        <input
-          id="email"
-          type="email"
-          required
-          class="mt-2 w-full rounded border px-4 py-2"
-        >
+        <p class="mt-3 text-slate-400">
+          Sign in to access your Article Hub account.
+        </p>
       </div>
 
-      <div class="mt-4">
-        <label for="password">Password</label>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900 p-8 shadow-2xl">
 
-        <input
-          id="password"
-          type="password"
-          required
-          class="mt-2 w-full rounded border px-4 py-2"
-        >
+        <form id="login-form" class="space-y-5">
+
+          <div>
+            <label for="email" class="text-sm font-medium text-slate-200">
+              Email
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              required
+              class="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+              placeholder="you@example.com"
+            >
+          </div>
+
+          <div>
+            <label for="password" class="text-sm font-medium text-slate-200">
+              Password
+            </label>
+
+            <input
+              id="password"
+              type="password"
+              required
+              class="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+              placeholder="••••••••"
+            >
+          </div>
+
+          <div id="loading" class="hidden text-center">
+            <p class="text-sm text-blue-400">
+              Logging in...
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-xl bg-blue-500 px-5 py-3 font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-400"
+          >
+            Login
+          </button>
+
+          <p id="login-message" class="text-center text-sm"></p>
+
+        </form>
+
       </div>
 
-      <button
-        type="submit"
-        class="mt-6 rounded px-5 py-2 font-semibold"
-      >
-        Login
-      </button>
-
-      <p id="login-message" class="mt-4"></p>
-
-    </form>
+    </section>
 
   </main>
 

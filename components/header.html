@@ -1,33 +1,59 @@
-<header class="border-b">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+<header class="border-b border-white/10 bg-slate-950">
 
-    <a href="index.html" class="text-xl font-bold">
-      Article Hub
+  <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
+
+    <a
+      href="index.html"
+      class="text-lg font-bold tracking-tight text-white"
+    >
+      Article Hub<span class="text-blue-400">.</span>
     </a>
 
-    <div class="flex gap-6">
+    <div class="flex items-center gap-3 text-xs font-medium sm:gap-5 sm:text-sm">
 
-      <a id="index-link" href="index.html">
+      <a
+        id="index-link"
+        href="index.html"
+        class="text-slate-300 hover:text-white"
+      >
         Articles
       </a>
 
-      <a id="login-link" href="login.html">
+      <a
+        id="login-link"
+        href="login.html"
+        class="text-slate-300 hover:text-white"
+      >
         Login
       </a>
 
-      <a id="register-link" href="register.html">
+      <a
+        id="register-link"
+        href="register.html"
+        class="text-slate-300 hover:text-white"
+      >
         Register
       </a>
 
-      <a id="create-link" href="create-post.html" hidden>
-        Create Article
+      <a
+        id="create-link"
+        href="create-post.html"
+        hidden
+        class="rounded-lg bg-blue-500 px-3 py-2 text-xs font-semibold text-white sm:px-4 sm:text-sm"
+      >
+        Create
       </a>
 
-      <button id="logout-button" hidden>
+      <button
+        id="logout-button"
+        hidden
+        class="text-slate-300 hover:text-white"
+      >
         Logout
       </button>
 
     </div>
 
   </nav>
+
 </header>

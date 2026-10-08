@@ -3,56 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Register - Article Hub</title>
-
   <link rel="stylesheet" href="./src/output.css">
 </head>
 
-<body>
+<body class="min-h-screen bg-slate-950 text-white">
 
   <header id="header"></header>
 
-  <main class="mx-auto max-w-md px-6 py-12">
+  <main class="flex min-h-[calc(100vh-140px)] items-center justify-center px-6 py-16">
 
-    <h1 class="text-3xl font-bold">
-      Create an account
-    </h1>
+    <section class="w-full max-w-md">
 
-    <form id="register-form" class="mt-8">
+      <div class="mb-8 text-center">
+        <p class="text-sm font-semibold uppercase tracking-widest text-blue-400">
+          Join the community
+        </p>
 
-      <div>
-        <label for="email">Email</label>
+        <h1 class="mt-3 text-4xl font-bold tracking-tight">
+          Create account
+        </h1>
 
-        <input
-          id="email"
-          type="email"
-          required
-          class="mt-2 w-full rounded border px-4 py-2"
-        >
+        <p class="mt-3 text-slate-400">
+          Create your account and start sharing articles.
+        </p>
       </div>
 
-      <div class="mt-4">
-        <label for="password">Password</label>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900 p-8 shadow-2xl">
 
-        <input
-          id="password"
-          type="password"
-          required
-          class="mt-2 w-full rounded border px-4 py-2"
-        >
+        <form id="register-form" class="space-y-5">
+
+          <div>
+            <label for="email" class="text-sm font-medium text-slate-200">
+              Email
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              required
+              class="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+              placeholder="you@example.com"
+            >
+          </div>
+
+          <div>
+            <label for="password" class="text-sm font-medium text-slate-200">
+              Password
+            </label>
+
+            <input
+              id="password"
+              type="password"
+              required
+              class="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+              placeholder="••••••••"
+            >
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-xl bg-blue-500 px-5 py-3 font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-400"
+          >
+            Create account
+          </button>
+
+          <p id="register-message" class="text-center text-sm"></p>
+
+        </form>
+
       </div>
 
-      <button
-        type="submit"
-        class="mt-6 rounded px-5 py-2 font-semibold"
-      >
-        Register
-      </button>
-
-      <p id="register-message" class="mt-4"></p>
-
-    </form>
+    </section>
 
   </main>
 
