@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
+
+"scripts": {
   "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
   "vite": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
   "test": "echo \"Error: no test specified\" && exit 1"
 },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anthonyapitchou/supabase-frontend-assignment.git"
