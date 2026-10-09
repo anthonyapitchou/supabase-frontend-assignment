@@ -1,17 +1,22 @@
 
 import { defineConfig } from "vite";
-import { resolve } from "path";
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
+
+const currentDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   base: "/supabase-frontend-assignment/",
   build: {
+    outDir: "dist",
+    emptyOutDir: true,
     rollupOptions: {
       input: {
-        home: resolve(__dirname, "index.html"),
-        articles: resolve(__dirname, "articles.html"),
-        login: resolve(__dirname, "login.html"),
-        register: resolve(__dirname, "register.html"),
-        createPost: resolve(__dirname, "create-post.html"),
+        home: resolve(currentDir, "index.html"),
+        articles: resolve(currentDir, "articles.html"),
+        login: resolve(currentDir, "login.html"),
+        register: resolve(currentDir, "register.html"),
+        createPost: resolve(currentDir, "create-post.html"),
       },
     },
   },
