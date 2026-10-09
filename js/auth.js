@@ -5,70 +5,60 @@ const articlesContainer = document.getElementById("articles-list");
 const loadingElement = document.getElementById("loading");
 
 async function loadArticles() {
-  loadingElement.style.display = "block";
-  articlesContainer.innerHTML = "";
+  if (!articlesContainer || !loadingElement) return;
 
   try {
+    loadingElement.classList.remove("hidden");
+    articlesContainer.replaceChildren();
+
     const { data: articles, error } = await supabase
       .from("posts")
       .select("*")
       .order("created_at", { ascending: false });
 
-    if (error) {
-      throw error;
-    }
+    if (error) throw error;
 
-    if (articles.length === 0) {
-      articlesContainer.innerHTML = `
-        <p class="text-slate-400">No articles yet.</p>
-      `;
+    if (!articles || articles.length === 0) {
+      articlesContainer.textContent = "No articles yet.";
       return;
     }
 
-    articles.forEach((article) => {
-      const articleElement = document.createElement("div");
+    for (const article of articles) {
+      const card = document.createElement("a");
 
-      articleElement.innerHTML = `
-        <a href="articles.html?id=${article.id}"
-          class="group block h-full rounded-2xl border border-slate-700 bg-slate-800 p-6 shadow-lg transition duration-300 hover:-translate-y-1 hover:border-blue-500"
-        >
-          <div class="mb-5 flex items-center justify-between gap-3">
-            <span class="rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">
-              ${article.category || "Article"}
-            </span>
+      card.href = `./article.html?id=${encodeURIComponent(article.id)}`;
+      card.className =
+        "block rounded-2xl border border-slate-700 bg-slate-800 p-6 hover:border-blue-500";
 
-            <span class="text-xs text-slate-500">Article</span>
-          </div>
+      const category = document.createElement("p");
+      category.className = "mb-3 text-sm text-blue-400";
+      category.textContent = article.category || "Article";
 
-          <h2 class="wrap-break-word text-xl font-bold text-white">
-            ${article.title}
-          </h2>
+      const title = document.createElement("h2");
+      title.className = "text-xl font-bold text-white";
+      title.textContent = article.title;
 
-          <p class="mt-3 wrap-break-word leading-7 text-slate-400">
-            ${article.content}
-          </p>
+      const excerpt = document.createElement("p");
+      excerpt.className = "mt-3 leading-7 text-slate-400";
+      excerpt.textContent =
+        (article.content || "").slice(0, 160) + 
+        ((article.content || "").length > 160 ? "..." : "");
 
-          <div class="mt-6 border-t border-slate-700 pt-5">
-            <span class="text-sm font-semibold text-blue-400 transition group-hover:text-blue-300">
-              Read article →
-            </span>
-          </div>
-        </a>
-      `;
+      const link = document.createElement("p");
+      link.className = "mt-5 font-semibold text-blue-400";
+      link.textContent = "Read article →";
 
-      articlesContainer.appendChild(articleElement);
-    });
+      card.append(category, title, excerpt, link);
+      articlesContainer.appendChild(card);
+    }
   } catch (error) {
-    console.error("Error fetching articles:", error);
-
-    articlesContainer.innerHTML = `
-      <p class="text-red-400">
-        Unable to load articles. Please try again later.
-      </p>
-    `;
+    console.error("Unable to load articles:", error);
+    articlesContainer.textContent =
+      "Unable to load articles. Please try again later.";
   } finally {
-    loadingElement.style.display = "none";
+    loadingElement.classList.add("hidden");
   }
 }
 
 loadArticles();
+

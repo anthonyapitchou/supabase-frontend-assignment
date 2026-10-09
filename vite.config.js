@@ -14,6 +14,7 @@ export default defineConfig({
       input: {
         home: resolve(currentDir, "index.html"),
         articles: resolve(currentDir, "articles.html"),
+        article: resolve(currentDir, "article.html"),
         login: resolve(currentDir, "login.html"),
         register: resolve(currentDir, "register.html"),
         createPost: resolve(currentDir, "create-post.html"),
