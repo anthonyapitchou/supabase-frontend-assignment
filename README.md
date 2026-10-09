@@ -79,29 +79,6 @@ Row Level Security (RLS) policies restrict authenticated users to creating and m
 
 Email confirmation should be enabled in the Supabase Authentication settings.
 
-## Project Structure
-
-supabase-frontend-assignment/
-├── components/
-│   ├── header.html
-│   └── footer.html
-├── js/
-│   ├── components.js
-│   ├── supabase.js
-│   ├── auth.js
-│   ├── login.js
-│   ├── register.js
-│   └── post.js
-├── src/
-│   ├── input.css
-│   └── output.css
-├── index.html
-├── articles.html
-├── login.html
-├── register.html
-├── create-post.html
-├── package.json
-└── README.md
 
 ## Security Notes
 
