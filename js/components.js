@@ -9,6 +9,20 @@ async function loadComponent(element, file) {
 
   element.innerHTML = html;
 
+  
+
+if (element === header) {
+  const currentPage = window.location.pathname.split("/").pop();
+  const articlesLink = document.getElementById("index-link");
+
+  if (currentPage === "articles.html") {
+    articlesLink.classList.add("border-b-2", "border-blue-400", "pb-1");
+  } else {
+    articlesLink.classList.remove("border-b-2", "border-blue-400", "pb-1");
+  }
+}
+
+
   if (element === header) {
     const {
       data: { session },
