@@ -66,7 +66,7 @@ Article Hub is a responsive article publishing application built as part of the 
 
 The application uses Supabase for authentication and article storage.
 
-The `posts` table contains article information such as:
+The posts table contains article information such as:
 
 - id
 - created_at
