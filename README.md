@@ -46,44 +46,50 @@ If I were to do this project again, I would spend more time planning the impleme
 
 1. Clone the repository:
 
+   ```bash
    git clone https://github.com/anthonyapitchou/supabase-frontend-assignment.git
+   ```
 
 2. Navigate to the project folder:
 
+   ```bash
    cd supabase-frontend-assignment
-
+   ```
 
 3. Install the dependencies:
 
+   ```bash
    npm install
+   ```
 
-4. Configure the Supabase client in js/supabase.js using your Supabase project URL and public publishable/anon key.
+4. Configure the Supabase client in `js/supabase.js` using your Supabase project URL and public publishable/anon key.
 
 5. Start the Tailwind CSS watcher in one terminal:
 
+   ```bash
    npm run dev
-
+   ```
 
 6. Start the Vite development server in a second terminal:
 
-   
+   ```bash
    npm run vite
+   ```
 
-
-7. Open the local URL provided by Vite, usually http://localhost:5173.
+7. Open the local URL provided by Vite, usually `http://localhost:5173`.
 
 ## Supabase Configuration
 
 The application uses Supabase for authentication and article storage.
 
-The posts table contains article information such as:
+The `posts` table contains article information such as:
 
-- id
-- created_at
-- title
-- content
-- category
-- user_id
+- `id`
+- `created_at`
+- `title`
+- `content`
+- `category`
+- `user_id`
 
 Row Level Security (RLS) policies allow public reading of articles while restricting article creation to authenticated users. User ownership is checked using the authenticated user's ID.
 
@@ -99,3 +105,4 @@ Email confirmation should be enabled in the Supabase Authentication settings.
 ## Author
 
 Developed as part of the Noroff Frontend Development programme.
+
