@@ -78,7 +78,7 @@ The application uses Supabase for authentication and article storage.
 
 The posts table contains article information such as:
 
-- id
+- 'id'
 - created_at
 - title
 - content
