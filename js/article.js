@@ -19,13 +19,16 @@ async function loadArticle() {
       .from("posts")
       .select("*")
       .eq("id", articleId)
-      .single();
+      .maybeSingle();
 
     if (error) throw error;
 
     if (!article) {
-      throw new Error("Article not found.");
+      throw new Error(
+        "Article not found. The article may have been removed or the link may be incorrect."
+      );
     }
+
 
     document.getElementById("article-category").textContent =
       article.category || "Article";

@@ -1,17 +1,16 @@
+
 {
   "name": "supabase-frontend-assignment",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-
-"scripts": {
-  "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
-  "vite": "vite",
-  "build": "vite build",
-  "preview": "vite preview",
-  "test": "echo \"Error: no test specified\" && exit 1"
-},
-
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
+    "vite": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anthonyapitchou/supabase-frontend-assignment.git"
@@ -25,11 +24,11 @@
   },
   "homepage": "https://github.com/anthonyapitchou/supabase-frontend-assignment#readme",
   "dependencies": {
-    "@supabase/supabase-js": "^2.117.2",
-    "@tailwindcss/cli": "^4.3.3",
-    "tailwindcss": "^4.3.3"
+    "@supabase/supabase-js": "^2.117.2"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3",
     "vite": "^8.3.2"
   }
 }

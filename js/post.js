@@ -8,60 +8,70 @@ if (!session) {
   window.location.href = "./login.html";
 }
 
-// Loading states
 const loadingElement = document.getElementById("loading");
-
-// Create article
 const createForm = document.getElementById("create-form");
-
-console.log("CREATE FORM:", createForm);
+const messageElement = document.getElementById("error-message");
 
 createForm.addEventListener("submit", async (event) => {
-  console.log("SUBMIT DETECTED");
-
   event.preventDefault();
 
-  // Show loading
+  const submitButton = createForm.querySelector(
+    'button[type="submit"]'
+  );
+  const formInputs = createForm.querySelectorAll(
+    "input, textarea, select"
+  );
+
+  const title = document.getElementById("title").value;
+  const content = document.getElementById("content").value;
+  const category = document.getElementById("category").value;
+
+  // Disable the form while submitting
+  submitButton.disabled = true;
+  formInputs.forEach((input) => {
+    input.disabled = true;
+  });
+
+  messageElement.textContent = "";
+  messageElement.classList.add("hidden");
   loadingElement.classList.remove("hidden");
 
   try {
-    const title = document.getElementById("title").value;
-    const content = document.getElementById("content").value;
-    const category = document.getElementById("category").value;
-
-    const { data, error } = await supabase
-      .from("posts")
-      .insert([
-        {
-          title,
-          content,
-          category,
-          user_id: session.user.id,
-        },
-      ]);
+    const { error } = await supabase.from("posts").insert([
+      {
+        title,
+        content,
+        category,
+        user_id: session.user.id,
+      },
+    ]);
 
     if (error) {
       throw error;
     }
 
-    console.log("Article created:", data);
+    messageElement.textContent = "Article created successfully!";
+    messageElement.classList.remove("hidden", "text-red-400");
+    messageElement.classList.add("text-blue-400");
 
-    // Hide loading
-    loadingElement.classList.add("hidden");
+    createForm.reset();
 
-    alert("Article created successfully!");
-
-    window.location.href = "./index.html";
-
+    window.setTimeout(() => {
+      window.location.href = "./index.html";
+    }, 1500);
   } catch (error) {
-    // Hide loading
-    loadingElement.classList.add("hidden");
-
-    const errorMessage =
+    messageElement.textContent =
       error.message || "An error occurred while creating the article.";
 
-    console.error("Error creating article:", errorMessage);
+    messageElement.classList.remove("hidden", "text-blue-400");
+    messageElement.classList.add("text-red-400");
+  } finally {
+    loadingElement.classList.add("hidden");
 
-    document.getElementById("error-message").textContent = errorMessage;
+    // Re-enable the form if the user stays on this page
+    submitButton.disabled = false;
+    formInputs.forEach((input) => {
+      input.disabled = false;
+    });
   }
 });

@@ -1,42 +1,57 @@
-console.log("REGISTER JS LOADED");
-
 import { supabase } from "./supabase.js";
 
 const registerForm = document.getElementById("register-form");
-
-console.log("FORM:", registerForm);
+const registerMessage = document.getElementById("register-message");
+const loadingElement = document.getElementById("loading");
 
 registerForm.addEventListener("submit", async (event) => {
-  console.log("SUBMIT DETECTED");
-
   event.preventDefault();
+
+  const submitButton = registerForm.querySelector(
+    'button[type="submit"]'
+  );
+  const formInputs = registerForm.querySelectorAll("input");
 
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
+  // Disable the form while submitting
+  submitButton.disabled = true;
+  formInputs.forEach((input) => {
+    input.disabled = true;
+  });
+
+  registerMessage.textContent = "";
+  registerMessage.classList.add("hidden");
+  loadingElement.classList.remove("hidden");
+
   try {
-  const { data, error } = await supabase.auth.signUp({
-  email: email,
-  password: password,
-});
-
-const user = data.user;
-
-    console.log("SUPABASE RESPONSE:", user, error);
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
 
     if (error) {
       throw error;
     }
 
-    if (user) {
-      alert(
-        "Registration successful! Please check your email to confirm your account."
-      );
+    registerMessage.textContent =
+      "Registration successful! Please check your email to confirm your account.";
+    registerMessage.classList.remove("hidden");
 
-      registerForm.reset();
-    }
+    registerForm.reset();
   } catch (error) {
-    console.error("REGISTRATION ERROR:", error);
-    alert("Error during registration: " + error.message);
+    registerMessage.textContent =
+      "Error during registration: " + error.message;
+    registerMessage.classList.remove("hidden");
+  } finally {
+    // Hide loading indicator
+    loadingElement.classList.add("hidden");
+
+    // Re-enable the form
+    submitButton.disabled = false;
+    formInputs.forEach((input) => {
+      input.disabled = false;
+    });
   }
 });
